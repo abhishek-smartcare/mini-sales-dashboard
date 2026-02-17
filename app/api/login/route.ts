@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
   response.cookies.set("token", token, {
   httpOnly: true,
-  secure: false, 
+  secure: true, 
   path: "/",     
 });
 

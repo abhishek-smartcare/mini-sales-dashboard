@@ -23,9 +23,6 @@ export default function Login() {
 if(email==="") return setErr("Please Enter Email");
 if(password==="") return setErr("Please Enter password");
 
-
-
-
     if (res.ok) {
       router.replace("/dashboard");
     } else {
