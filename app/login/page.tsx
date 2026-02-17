@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const  [err, setErr]= useState("")
   const router = useRouter();
 
   const handleLogin = async () => {
@@ -19,6 +20,12 @@ export default function Login() {
       body: JSON.stringify({ email, password }),
     });
 
+if(email==="") return setErr("Please Enter Email");
+if(password==="") return setErr("Please Enter password");
+
+
+
+
     if (res.ok) {
       router.replace("/dashboard");
     } else {
@@ -28,6 +35,9 @@ export default function Login() {
 
   return (
     <>
+    
+    {err? <div className="text-center mt-4 text-red-600">{err}</div>:""}
+
     <div className="flex justify-between gap-6">
 
     <div className="grid  p-10 max-w-sm mx-auto w-1/3">
@@ -37,6 +47,7 @@ export default function Login() {
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
       />
+      
       <input
         className="border-3 rounded-[5px] mb-[12px] text-base p-[12px]"
         type="password"
@@ -45,10 +56,12 @@ export default function Login() {
       />
       <button
         onClick={handleLogin}
-        className="bg-black text-white mb-[12px] border-3 rounded-[5px] text-base p-[12px]"
+        className="bg-black hover:bg-gray-700 text-white border-3 rounded-lg text-base p-3"
       >
         Login
       </button>
+     
+
     </div>
     </div>
     </>

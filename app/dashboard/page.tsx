@@ -229,7 +229,7 @@ const handleExport = async () => {
         )}
 
         <div className="space-y-4">
-          {leads.map((lead) => (
+          {leads.reverse().slice(0).map((lead) => (
             <div
               key={lead._id}
               className="border p-4 rounded flex justify-between items-center"
